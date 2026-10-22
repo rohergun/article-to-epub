@@ -1,4 +1,4 @@
-# RLS (Read Later 2 EPUB)
+# RLE (Read Later to EPUB)
 
 CLI project helps you with converting articles to epub format in one line.
 
