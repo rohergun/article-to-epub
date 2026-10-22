@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { epub } from '../src/commands/epub.js';
 
-// Register new transformations here.
+
 const COMMANDS = { epub };
 
 const USAGE = `Usage: read-later-epub <command> <article-url>
