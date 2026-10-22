@@ -4,7 +4,8 @@
   "description": "CLI that turns a web article into an EPUB file",
   "type": "module",
   "bin": {
-    "read-later-epub": "./bin/cli.js"
+    "read-later-epub": "./bin/cli.js",
+    "rle": "./bin/cli.js"
   },
   "scripts": {
     "start": "node bin/cli.js"
