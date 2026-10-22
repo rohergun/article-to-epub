@@ -1,0 +1,21 @@
+{
+  "name": "read-later-epub",
+  "version": "1.0.0",
+  "description": "CLI that turns a web article into an EPUB file",
+  "type": "module",
+  "bin": {
+    "read-later-epub": "./bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "epub-gen-memory": "^1.1.2",
+    "jsdom": "^29.1.1"
+  }
+}
