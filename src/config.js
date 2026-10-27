@@ -3,7 +3,6 @@ import { fileURLToPath } from 'node:url';
 
 const ENV_FILE = fileURLToPath(new URL('../.env', import.meta.url));
 
-// Variables already set in the shell take precedence over .env.
 if (existsSync(ENV_FILE)) process.loadEnvFile(ENV_FILE);
 
 export const config = {

@@ -1,15 +1,23 @@
 #!/usr/bin/env node
 import { epub } from '../src/commands/epub.js';
+import { send } from '../src/commands/send.js';
 
 
-const COMMANDS = { epub };
+const COMMANDS = { epub, send };
 
-const USAGE = `Usage: read-later-epub <command> <article-url>
+const USAGE = 
+`\n
+############### Usage ######################
 
-Commands:
-${Object.values(COMMANDS)
-  .map((cmd) => `  ${cmd.usage.padEnd(24)}${cmd.description}`)
-  .join('\n')}`;
+Type rle -h or --help to display Usage message.\n
+
+rle epub <url>  : Transform article to epub\n
+rle send <epub file>  : Send epub file to your kindle mail\n
+rle send -t <url>  : Transform and send url to your kindle mail\n
+rle config -e      : Edit configurations
+
+###########################################
+`;
 
 function parseUrl(input) {
   try {
@@ -36,7 +44,7 @@ async function main() {
 
   const command = COMMANDS[commandName];
   if (!command) throw new Error(`Unknown command: ${commandName}\n${USAGE}`);
-  if (!input) throw new Error(`Missing article URL\nUsage: read-later-epub ${command.usage}`);
+  if (!input) throw new Error(`Missing article: ${USAGE}`);
 
   await command.run(parseUrl(input));
 }
