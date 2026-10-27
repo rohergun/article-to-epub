@@ -4,9 +4,10 @@ CLI project helps you with converting articles to epub format in one line.
 
 ## Table of contents
 1. [About](#about)
-2. [Installing Locally](#installing-locally)
-3. [Usage](#usage)
-4. [Send to Kindle](#send-to-kindle)
+2. [Sento kindle flow](#send-to-kindle-flow)
+3. [Installing Locally](#installing-locally)
+4. [Usage](#usage)
+5. [Send to Kindle](#send-to-kindle)
 
 ## About
 
@@ -14,15 +15,37 @@ I kept finding interesting articles and blog posts that I wanted to read later, 
 
 I mainly made it for reading on my Kindle.
 
-**Basic flow:**
+
+## Sending to kindle flow
+
+What happens when you run `rle send`:
 
 ```
-url -> fetch page -> extract article -> build epub
-                                         |
-                                         v
-                                    store in epub outputs
-                                    (gitignored by default)
-                       
+rle send <url>
+      |
+      v
+check .env config ---- missing values? -> stop with an error
+      |
+      v
+fetch page          (fetchPage.js)
+      |
+      v
+extract article     (extractArticle.js, Mozilla Readability)
+      |
+      v
+build epub          (buildEpub.js)
+      |
+      v
+save to epuboutputs/<title>.epub   (output.js)
+      |
+      v
+email the .epub     (sendToKindle.js, nodemailer over SMTP)
+  from: SENDER_EMAIL
+  to:   KINDLE_EMAIL
+      |
+      v
+Amazon Send-to-Kindle -> your Kindle
+(sender must be on the approved list)
 ```
 
 ## Installing Locally
@@ -100,3 +123,4 @@ Run `rle --help` to see all available commands.
    ```
 
 `.env` is read from the project folder, so it works from any directory. Variables already set in your shell override the file. `.env` is gitignored.
+

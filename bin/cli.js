@@ -12,9 +12,7 @@ const USAGE =
 Type rle -h or --help to display Usage message.\n
 
 rle epub <url>  : Transform article to epub\n
-rle send <epub file>  : Send epub file to your kindle mail\n
-rle send -t <url>  : Transform and send url to your kindle mail\n
-rle config -e      : Edit configurations
+rle send <url>  : Transform and send article to your kindle mail
 
 ###########################################
 `;
