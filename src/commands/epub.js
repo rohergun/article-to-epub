@@ -18,5 +18,6 @@ export const epub = {
 
     const filePath = await saveEpub(buffer, article.title);
     console.log(`Saved: ${filePath}`);
+    return { filePath, title: article.title };
   },
 };
